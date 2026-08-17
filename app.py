@@ -29,23 +29,14 @@ st.markdown("""
 def validate_domain(domain: str) -> Tuple[bool, str]:
     """Validate and normalize domain format"""
     domain = domain.strip().lower()
-
-    # Remove common prefixes
     domain = re.sub(r'^(https?://|www\.)', '', domain)
-
-    # Remove trailing dot
     if domain.endswith('.'):
         domain = domain[:-1]
-
-    # Validate length
     if not domain or len(domain) < 3 or len(domain) > 253:
         return False, "Domain must be 3-253 characters"
-
-    # Validate format (RFC 1123)
     pattern = r'^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)*[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$'
     if not re.match(pattern, domain):
         return False, "Invalid domain format (use letters, numbers, hyphens, dots)"
-
     return True, domain
 
 def analyze_spf(domain: str) -> Dict:
@@ -68,7 +59,6 @@ def analyze_spf(domain: str) -> Dict:
                 ]
             }
 
-        # Check for multiple SPF records (RFC violation)
         if len(spf_records) > 1:
             return {
                 'found': True, 'records': spf_records, 'status': '🔴 Critical', 'score': 5,
@@ -82,7 +72,6 @@ def analyze_spf(domain: str) -> Dict:
         score = 25
         actions = []
 
-        # Analyze policy
         if '-all' in spf_record:
             score += 5
         elif '~all' in spf_record:
@@ -95,7 +84,6 @@ def analyze_spf(domain: str) -> Dict:
             score = max(0, score - 5)
             actions.append(('warning', 'Add Policy Terminator', 'End SPF record with -all (hardfail)'))
 
-        # Count DNS lookups
         mechanisms = (spf_record.count('include:') +
                      spf_record.count('a:') +
                      spf_record.count('mx:') +
@@ -171,18 +159,14 @@ def analyze_dkim(domain: str) -> Dict:
         record = rec_info['record']
         selector = rec_info['selector']
 
-        # Check for public key
         if 'p=' not in record:
             actions.append(('critical', f'Selector "{selector}" - Missing Public Key', 'Add p= field with RSA public key'))
         else:
-            # Check key strength (rough estimate)
-            key_section = record[record.find('p='):record.find('p=')+100] if 'p=' in record else ''
-            if len(record) > 350:  # 2048-bit key produces ~340-350 char record
+            if len(record) > 350:
                 score = min(score + 10, 30)
             else:
                 actions.append(('warning', f'Selector "{selector}" - Weak Key', 'Upgrade to RSA-2048 bit key (current key too small)'))
 
-        # Check algorithm
         if 'h=sha256' in record:
             score = min(score + 5, 30)
         elif 'h=sha1' in record:
@@ -225,7 +209,6 @@ def analyze_dmarc(domain: str) -> Dict:
         score = 15
         actions = []
 
-        # Check policy
         if 'p=reject' in dmarc_record:
             score += 15
             actions.append(('success', 'Strong Policy: p=reject', 'Maximum enforcement - rejecting failed emails'))
@@ -238,7 +221,6 @@ def analyze_dmarc(domain: str) -> Dict:
         else:
             actions.append(('critical', 'No Policy Specified', 'Add p=reject, p=quarantine, or p=none'))
 
-        # Check reporting
         has_rua = 'rua=' in dmarc_record
         has_ruf = 'ruf=' in dmarc_record
 
@@ -252,7 +234,6 @@ def analyze_dmarc(domain: str) -> Dict:
         else:
             actions.append(('info', 'No Forensic Reports', 'Optional: Add ruf=mailto:forensics@domain.com'))
 
-        # Check alignment
         if 'dkim=strict' in dmarc_record or 'spf=strict' in dmarc_record:
             actions.append(('success', 'Strict Alignment Enabled', 'High security - requiring exact domain match'))
         else:
@@ -286,44 +267,38 @@ def analyze_dmarc(domain: str) -> Dict:
 
 def calculate_overall_score(spf: int, dkim: int, dmarc: int) -> int:
     """Calculate weighted security score (0-100)"""
-    return int(spf + dkim + dmarc)  # Already sums to 0-100
+    # SPF (0-35) + DKIM (0-30) + DMARC (0-35) = 0-100
+    return spf + dkim + dmarc
 
-# ============================================
 # MAIN INTERFACE
-# ============================================
-
-# Header Navigation
 col1, col2 = st.columns([4, 1])
 with col1:
     st.title("🔒 MailGuard")
     st.markdown("*Analyze your Domain Email Security*")
 
-# Navigation
 st.markdown("---")
 nav = st.radio("", ["🔍 Analyzer", "📚 Learn", "ℹ️ About"], horizontal=True, label_visibility="collapsed")
 
 if nav == "🔍 Analyzer":
     st.markdown("### Analyze your Domain Email Security")
 
-    # Input Section
-    col1, col2 = st.columns([3, 1])
-with st.form("analyzer_form"):
-    with col1:
-        domain_input = st.text_input("Enter domain:", placeholder="microsoft.com, google.com, github.com", label_visibility="collapsed")
-    with col2:
-        st.markdown("")
-        analyze_btn = st.form_submit_button("🔍 Analyze", use_container_width=True)
-    
-    # Quick Guide
-    st.markdown("""
-    **Quick Guide:**
-    1. Enter any domain name
-    2. We check SPF, DKIM, and DMARC records
-    3. You get a security score + action items
-    """)
+    # Input Section with Form (supports Enter key)
+    with st.form("analyzer_form"):
+        col1, col2 = st.columns([3, 1])
+        with col1:
+            domain_input = st.text_input("Enter domain:", placeholder="microsoft.com, google.com, github.com", label_visibility="collapsed")
+        with col2:
+            st.markdown("")
+            analyze_btn = st.form_submit_button("🔍 Analyze", use_container_width=True)
 
-if analyze_btn and domain_input:
-    # Analysis code...
+        st.markdown("""
+        **Quick Guide:**
+        1. Enter any domain name
+        2. We check SPF, DKIM, and DMARC records
+        3. You get a security score + action items
+        """)
+
+    if analyze_btn and domain_input:
         is_valid, domain = validate_domain(domain_input)
         if not is_valid:
             st.error(f"❌ {domain}")
@@ -336,7 +311,6 @@ if analyze_btn and domain_input:
                 dmarc = analyze_dmarc(domain)
                 overall = calculate_overall_score(spf['score'], dkim['score'], dmarc['score'])
 
-            # Overall Score Display
             col1, col2, col3, col4 = st.columns(4)
 
             with col1:
@@ -365,7 +339,6 @@ if analyze_btn and domain_input:
 
             st.markdown("---")
 
-            # Action Items (All results combined)
             st.markdown("### 📋 Recommended Actions")
 
             all_actions = spf['actions'] + dkim['actions'] + dmarc['actions']
@@ -395,8 +368,6 @@ if analyze_btn and domain_input:
                     st.markdown(f"<div class='action-warning' style='border-left-color: #3b82f6;'><b>💡 {title}</b><br>{desc}</div>", unsafe_allow_html=True)
 
             st.markdown("---")
-
-            # Detailed Records
             st.markdown("### 📊 Detailed Results")
 
             col1, col2, col3 = st.columns(3)
@@ -425,10 +396,6 @@ if analyze_btn and domain_input:
                     with st.expander("View Record"):
                         for record in dmarc['records']:
                             st.code(record, language="text")
-
-# ============================================
-# LEARN PAGE
-# ============================================
 
 elif nav == "📚 Learn":
     st.title("📚 Email Analyzer Guide")
@@ -561,10 +528,6 @@ elif nav == "📚 Learn":
         ✅ Enable reporting (rua and ruf)
         ❌ Don't jump straight to p=reject
         """)
-
-# ============================================
-# ABOUT PAGE
-# ============================================
 
 elif nav == "ℹ️ About":
     st.title("ℹ️ About MailGuard")
