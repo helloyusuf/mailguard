@@ -2,7 +2,7 @@
 
 A free, open-source web tool that analyzes your domain's email authentication security posture by checking DNS records for SPF, DKIM, and DMARC configurations.
 
-**Live Url**:(https://helloyusuf-mailguard.streamlit.app/) (free)
+**Live Url**:(https://helloyusuf-mailguard.streamlit.app) (free)
 
 
 ## 📋 Features
