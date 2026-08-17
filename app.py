@@ -286,7 +286,7 @@ def analyze_dmarc(domain: str) -> Dict:
 
 def calculate_overall_score(spf: int, dkim: int, dmarc: int) -> int:
     """Calculate weighted security score (0-100)"""
-    return int((spf * 0.35) + (dkim * 0.30) + (dmarc * 0.35))
+    return int(spf + dkim + dmarc)  # Already sums to 0-100
 
 # ============================================
 # MAIN INTERFACE
@@ -307,12 +307,13 @@ if nav == "🔍 Analyzer":
 
     # Input Section
     col1, col2 = st.columns([3, 1])
+with st.form("analyzer_form"):
     with col1:
         domain_input = st.text_input("Enter domain:", placeholder="microsoft.com, google.com, github.com", label_visibility="collapsed")
     with col2:
         st.markdown("")
-        analyze_btn = st.button("🔍 Analyze", use_container_width=True)
-
+        analyze_btn = st.form_submit_button("🔍 Analyze", use_container_width=True)
+    
     # Quick Guide
     st.markdown("""
     **Quick Guide:**
@@ -321,7 +322,8 @@ if nav == "🔍 Analyzer":
     3. You get a security score + action items
     """)
 
-    if analyze_btn and domain_input:
+if analyze_btn and domain_input:
+    # Analysis code...
         is_valid, domain = validate_domain(domain_input)
         if not is_valid:
             st.error(f"❌ {domain}")
