@@ -51,7 +51,7 @@ MailGuard helps you implement these protections quickly and correctly.
 
 No installation required! You can try MailGuard instantly:
 
-1. **Visit**: [MailGuard online](https://mailguard-app.streamlit.app) *(when deployed)*
+1. **Visit**: [MailGuard online](https://helloyusuf-mailguard.streamlit.app)
 2. **Enter**: Your domain name (e.g., google.com, github.com, yourcompany.com)
 3. **Click**: "Analyze Domain"
 4. **View**: Your security score, findings, and recommendations
@@ -348,77 +348,6 @@ THIS TOOL IS PROVIDED "AS-IS" WITHOUT ANY WARRANTY. THE CREATORS ARE NOT LIABLE 
 
 ---
 
-## 📥 Get Started (Installation & Deployment)
-
-### Option 1: Try Online (Easiest - Recommended)
-
-No installation needed! When deployed:
-
-1. Visit: `https://mailguard-app.streamlit.app`
-2. Enter your domain name
-3. Click "Analyze"
-4. View your security report
-
-### Option 2: Deploy Your Own Copy (Free - 5 minutes)
-
-**Step 1: Create GitHub Repository**
-- Go to [GitHub.com](https://github.com) and create a free account
-- Click **New Repository**
-- Name it `mailguard`
-- Upload these 3 files: `app.py`, `requirements.txt`, `README.md`
-
-**Step 2: Deploy on Streamlit Cloud (Free)**
-- Go to [streamlit.io/cloud](https://streamlit.io/cloud)
-- Click **New app** and sign in with GitHub
-- Select your `mailguard` repository
-- Select `app.py` as main file
-- Click **Deploy**
-- Your app is live in 2-3 minutes! ✅
-
-### Option 3: Run Locally (For Developers)
-
-```bash
-# Clone repository
-git clone https://github.com/yourusername/mailguard.git
-cd mailguard
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the app
-streamlit run app.py
-
-# Open: http://localhost:8501
-```
-
-**Requirements:**
-- Python 3.8+
-- pip package manager
-
-### Option 4: Self-Hosted (Advanced)
-
-```bash
-# Using Docker
-docker build -t mailguard .
-docker run -p 8501:8501 mailguard
-
-# Or any Python-capable server
-pip install -r requirements.txt
-streamlit run app.py --server.port 8501 --server.address 0.0.0.0
-```
-
----
-
-## 📁 Project Files
-
-- **app.py** (34 KB) - Complete MailGuard application with UI and DNS analysis
-- **requirements.txt** (35 bytes) - Python dependencies (Streamlit + dnspython)
-- **README.md** (This file) - Documentation and guides
-
-That's all you need to run MailGuard!
-
----
-
 ## 🔒 Data Privacy & Security
 
 ✅ **No Data Storage** - Analysis is performed in-memory and not saved  
@@ -436,13 +365,6 @@ This project is open-source and available under the MIT License.
 
 ---
 
-## 🤝 Questions or Issues?
-
-- Found a bug? Open an issue on GitHub
-- Have a feature request? Create a GitHub issue
-- Need help? Check the "How to Use" tab in the app
-
----
-
-**MailGuard** - Protecting your domain's email security  
+**MailGuard** - Analyzing your domain's email security  
 **Version**: 1.0 | **Last Updated**: August 17, 2026 | **Status**: Production Ready ✅
+**Connect | Follow**: [Yusuf Bio](https://linktr.ee/yusufbio)
