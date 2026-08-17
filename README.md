@@ -318,12 +318,6 @@ THIS TOOL IS PROVIDED "AS-IS" WITHOUT ANY WARRANTY. THE CREATORS ARE NOT LIABLE 
 - Streamlit (web framework)
 - dnspython (DNS resolution)
 
-**Deployment:**
-- Streamlit Cloud (recommended, free)
-- GitHub + Netlify (alternative)
-- Replit (alternative)
-- Self-hosted (Docker supported)
-
 ### How It Works
 
 1. **User enters domain** → `example.com`
@@ -336,15 +330,6 @@ THIS TOOL IS PROVIDED "AS-IS" WITHOUT ANY WARRANTY. THE CREATORS ARE NOT LIABLE 
 5. **Validate syntax** → Check RFC compliance (7208, 6376, 7489)
 6. **Calculate score** → Apply weighted scoring algorithm
 7. **Generate report** → Display results with recommendations
-
-### Data Privacy
-
-✅ **Stateless** - No user data stored  
-✅ **No tracking** - No analytics or cookies  
-✅ **No logs** - DNS queries are not retained  
-✅ **No external calls** - Only queries public DNS records  
-✅ **HTTPS** - All communication is encrypted (Streamlit Cloud)  
-
 
 ---
 
