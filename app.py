@@ -303,7 +303,7 @@ st.markdown("---")
 nav = st.radio("", ["🔍 Analyzer", "📚 Learn", "ℹ️ About"], horizontal=True, label_visibility="collapsed")
 
 if nav == "🔍 Analyzer":
-    st.markdown("### Check your domain's email authentication security")
+    st.markdown("### Analyze your domain's email security")
 
     # Input Section
     col1, col2 = st.columns([3, 1])
@@ -429,7 +429,7 @@ if nav == "🔍 Analyzer":
 # ============================================
 
 elif nav == "📚 Learn":
-    st.title("📚 Email Authentication Guide")
+    st.title("📚 Email Analyzer Guide")
 
     tab1, tab2, tab3 = st.tabs(["📧 SPF", "🔑 DKIM", "📋 DMARC"])
 
@@ -570,7 +570,7 @@ elif nav == "ℹ️ About":
     st.markdown("""
     ## 🎯 Our Mission
 
-    MailGuard makes email authentication simple and accessible. We help organizations protect their domains from phishing, spoofing, and impersonation attacks.
+    MailGuard helps you to analyze your domain's email security so you can protect your organization domains from phishing, spoofing, and impersonation attacks.
 
     ---
 
@@ -624,16 +624,13 @@ elif nav == "ℹ️ About":
 
     ## 🔗 Get in Touch
 
-    Questions or feedback?
-    📌 **Visit:** https://linktr.ee/yusufbio
+    📌 **Connect | Follow:** [Yusuf Bio](https://linktr.ee/yusufbio)
 
-    Connect on LinkedIn, Twitter, GitHub, and more.
-
-    ---
+        ---
 
     **Version:** 1.0 | **Status:** ✅ Production Ready
     **Built with:** Streamlit + Python
     **Last Updated:** August 17, 2026
 
-    Made with ❤️ to help protect email security for everyone.
+    Made with ❤️ to help analyze your domain email security.
     """)
