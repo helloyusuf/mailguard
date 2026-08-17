@@ -2,9 +2,8 @@
 
 A free, open-source web tool that analyzes your domain's email authentication security posture by checking DNS records for SPF, DKIM, and DMARC configurations.
 
-**Live Demo**: [Deploy on Streamlit Cloud](#deployment) (free)
+**Live Url**:(https://helloyusuf-mailguard.streamlit.app/) (free)
 
----
 
 ## 📋 Features
 
@@ -16,41 +15,6 @@ A free, open-source web tool that analyzes your domain's email authentication se
 ✅ **Privacy-First** - Stateless analysis, no data storage, no tracking  
 ✅ **Completely Free** - Open-source, free to use and deploy  
 
----
-
-## 🚀 Quick Start
-
-### Option 1: Try Online (No Installation)
-
-1. Visit the deployed version: [MailGuard on Streamlit Cloud](deployment-url-here)
-2. Enter any domain name (e.g., google.com, github.com)
-3. Click "Analyze Domain"
-4. View your security score and recommendations
-
-### Option 2: Run Locally
-
-**Requirements:**
-- Python 3.8 or higher
-- pip (Python package manager)
-
-**Installation Steps:**
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/yourusername/mailguard.git
-cd mailguard
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Run the application
-streamlit run app.py
-
-# 4. Open your browser
-# Streamlit will open automatically at http://localhost:8501
-```
-
----
 
 ## 🔍 Understanding Email Authentication
 
@@ -293,33 +257,6 @@ THIS TOOL IS PROVIDED "AS-IS" WITHOUT WARRANTY OF ANY KIND. THE AUTHORS ARE NOT 
 
 Use this tool at your own risk. For production environments, always validate results with DNS tools like `dig`, `nslookup`, or your DNS provider's interface.
 
----
-
-## 🤝 Support & Contributing
-
-### Reporting Issues
-
-Found a bug? Have a feature request?
-
-1. Check existing [GitHub Issues](https://github.com/yourusername/mailguard/issues)
-2. Create a new issue with:
-   - Description of the problem
-   - Steps to reproduce
-   - Expected vs actual behavior
-   - Your environment (OS, browser, Python version)
-
-### Contributing
-
-We welcome contributions! Please:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
 ## 📚 Additional Resources
 
 ### Email Authentication Learning
@@ -346,7 +283,7 @@ This project is open-source and available under the MIT License. See LICENSE fil
 
 **MailGuard** - Built with care for email security
 
-Questions? Suggestions? Feel free to open an issue or contact us.
+Connect | Follow: https://www.linkedin.com/in/yusufranapurwala 
 
 ---
 
