@@ -591,7 +591,7 @@ elif nav == "ℹ️ About":
 
     📌 **Connect | Follow:** [Yusuf Bio](https://linktr.ee/yusufbio)
 
-        ---
+    ---
 
     **Version:** 1.0 | **Status:** ✅ Production Ready
     **Built with:** Streamlit + Python
