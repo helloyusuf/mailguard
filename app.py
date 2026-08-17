@@ -6,7 +6,7 @@ from typing import Dict, Tuple, List
 
 # Page configuration
 st.set_page_config(
-    page_title="MailGuard - Email Security Analyzer",
+    page_title="MailGuard - Domain Email Security Analyzer",
     page_icon="🔒",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -296,14 +296,14 @@ def calculate_overall_score(spf: int, dkim: int, dmarc: int) -> int:
 col1, col2 = st.columns([4, 1])
 with col1:
     st.title("🔒 MailGuard")
-    st.markdown("*Protect your domain's email security*")
+    st.markdown("*Analyze your Domain Email Security*")
 
 # Navigation
 st.markdown("---")
 nav = st.radio("", ["🔍 Analyzer", "📚 Learn", "ℹ️ About"], horizontal=True, label_visibility="collapsed")
 
 if nav == "🔍 Analyzer":
-    st.markdown("### Analyze your domain's email security")
+    st.markdown("### Analyze your Domain Email Security")
 
     # Input Section
     col1, col2 = st.columns([3, 1])
@@ -570,7 +570,7 @@ elif nav == "ℹ️ About":
     st.markdown("""
     ## 🎯 Our Mission
 
-    MailGuard helps you to analyze your domain's email security so you can protect your organization domains from phishing, spoofing, and impersonation attacks.
+    MailGuard helps you to analyze your domain email security so you can protect your organization domain from phishing, spoofing, and impersonation attacks.
 
     ---
 
