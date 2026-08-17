@@ -263,7 +263,7 @@ Use this tool at your own risk. For production environments, always validate res
 
 - [Google's Email Authentication Guide](https://support.google.com/a/answer/10737)
 - [Microsoft Email Authentication](https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/email-validation-and-authentication)
-- [DMARC Deployment Best Practices](https://dmarcian.com/dmarc-deployment-best-practices/)
+- [DMARC Deployment Best Practices](https://dmarcian.com/dmarc-deployment-best-practices](https://redsift.com/guides/dmarc-implementation)
 
 ### DNS Record Testing Tools
 
@@ -275,7 +275,7 @@ Use this tool at your own risk. For production environments, always validate res
 
 ## 📄 License
 
-This project is open-source and available under the MIT License. See LICENSE file for details.
+This project is open-source and built using AI.
 
 ---
 
