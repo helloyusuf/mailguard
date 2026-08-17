@@ -781,17 +781,9 @@ with tab_about:
     - **Hosting**: Streamlit Cloud (free tier)
     - **Data Storage**: None (stateless analysis)
     - **SSL/HTTPS**: Automatic (Streamlit Cloud)
-
+   
     ---
-
-    ### 📞 Support & Feedback
-
-    - Found an issue? Submit feedback in app
-    - Suggestions for improvements? We'd love to hear them
-    - Questions? Check the "How to Use" tab above
-
-    ---
-
+    
     ### 📄 Legal
 
     - **License**: This tool is free to use for any purpose
@@ -804,6 +796,7 @@ with tab_about:
     **Version**: 1.0
     **Last Updated**: August 2026
     **Status**: ✅ Production Ready
+    **Connect | Follow**: ✅ https://www.linkedin.com/in/yusufranapurwala
     """)
 
 # ============================================
@@ -817,5 +810,6 @@ st.markdown("""
     <p>Free tool to analyze your domain's email security configuration (SPF, DKIM, DMARC)</p>
     <p>No personal data collected • No emails sent • Direct DNS queries only</p>
     <p><i>Always validate critical security changes with your IT team or DNS provider</i></p>
+    <p><i>**Connect | Follow**: ✅ https://www.linkedin.com/in/yusufranapurwala</i></p>
 </div>
 """, unsafe_allow_html=True)
