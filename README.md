@@ -228,12 +228,6 @@ v=DMARC1; p=quarantine; rua=mailto:reports@example.com; ruf=mailto:forensics@exa
 - Streamlit (web framework)
 - dnspython (DNS resolution)
 
-**Deployment:**
-- Streamlit Cloud (recommended, free)
-- GitHub + Netlify (alternative)
-- Replit (alternative)
-- Self-hosted (Docker supported)
-
 ### How It Works
 
 1. **User enters domain** → `example.com`
@@ -255,42 +249,6 @@ v=DMARC1; p=quarantine; rua=mailto:reports@example.com; ruf=mailto:forensics@exa
 ✅ **No external calls** - Only queries public DNS records  
 ✅ **HTTPS** - All communication is encrypted (Streamlit Cloud)  
 
----
-
-## 📦 Deployment
-
-### Option 1: Streamlit Cloud (Recommended - Free)
-
-1. Fork this repository on GitHub
-2. Go to https://streamlit.io/cloud
-3. Click "New app"
-4. Select your forked repository
-5. Choose `app.py` as main file
-6. Click "Deploy"
-7. Your app is live! 🎉
-
-### Option 2: Self-Hosted
-
-**Using Docker:**
-```bash
-# Build image
-docker build -t mailguard .
-
-# Run container
-docker run -p 8501:8501 mailguard
-```
-
-**Using Python (any server):**
-```bash
-pip install -r requirements.txt
-streamlit run app.py --server.port 8501 --server.address 0.0.0.0
-```
-
-### Option 3: GitHub + Netlify
-
-Convert to static site using Streamlit Community Cloud Export functionality
-
----
 
 ## 🔐 Security & Compliance
 
